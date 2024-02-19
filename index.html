@@ -103,9 +103,11 @@
 				Yes, you can run unit tests and view the results directly within the
 				app. The integrated testing features allow for a streamlined.
 			</p>
-			<button class="btn bg-primary border-none w-[170px] p-0">
-				Buy Tickets
-			</button>
+			<a href="#ticket-info"
+				><button class="btn bg-primary border-none w-[170px] p-0">
+					Buy Tickets
+				</button></a
+			>
 		</section>
 		<section
 			class="offers flex flex-col justify-center items-center mb-32 lg:mx-36"
@@ -172,10 +174,12 @@
 							<p class="bus-code font-inter">Coach-009-WEB ! AC_Business</p>
 						</div>
 						<div
-							class="bg-[#1DD10026] text-primary font-inter text-center p-4 rounded-xl"
+							class="bg-[#1DD10026] text-primary font-inter text-center p-4 rounded-xl flex items-center gap-1"
 						>
-							<i class="fa-solid fa-couch"></i> 40 Seats Left
+							<i class="fa-solid fa-couch"></i>
+							<div class="seat-remaining" id="seat-left">8 Seats Left</div>
 						</div>
+
 						<h3 class="bus-name"></h3>
 					</div>
 					<div
@@ -214,7 +218,10 @@
 					<p class="price-desc font-inter text-[#03071299]">Per Seat</p>
 				</div>
 			</div>
-			<div class="ticket-info p-8 bg-white rounded-2xl flex w-full gap-16">
+			<div
+				class="ticket-info p-8 bg-white rounded-2xl flex w-full gap-16"
+				id="ticket-info"
+			>
 				<div class="ticket-info-left flex flex-col gap-10 w-[55%]">
 					<h3 class="ticket-info-left-title">Select Your Seat</h3>
 					<div class="seat-available-selected flex justify-between">
@@ -244,42 +251,58 @@
 							<div class="row-a text-center text-[#03071280]">A</div>
 							<button
 								class="seat-1 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="A1"
+								onclick="selectSeat('A1')"
 							>
 								A1
 							</button>
 							<button
 								class="seat-2 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="A2"
+								onclick="selectSeat('A2')"
 							>
 								A2
 							</button>
 							<button
 								class="seat-3 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="A3"
+								onclick="selectSeat('A3')"
 							>
 								A3
 							</button>
 							<button
 								class="seat-4 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="A4"
+								onclick="selectSeat('A4')"
 							>
 								A4
 							</button>
 							<div class="row-b text-[#03071280] text-center">B</div>
 							<button
 								class="seat-5 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="B1"
+								onclick="selectSeat('B1')"
 							>
 								B1
 							</button>
 							<button
 								class="seat-6 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="B2"
+								onclick="selectSeat('B2')"
 							>
 								B2
 							</button>
 							<button
 								class="seat-7 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="B3"
+								onclick="selectSeat('B3')"
 							>
 								B3
 							</button>
 							<button
 								class="seat-8 btn bg-[#0307121A] p-4 rounded-xl text-[#03071280] text-center"
+								id="B4"
+								onclick="selectSeat('B4')"
 							>
 								B4
 							</button>
@@ -289,41 +312,48 @@
 				<div class="ticket-info-right flex flex-col gap-10 w-[45%] font-inter">
 					<h3 class="ticket-info-right-title">Select Your Seat</h3>
 					<div class="price-area w-full bg-[#F7F8F8] p-8">
-						<div class="seat-prices w-full grid grid-cols-3 grid-rows-3">
+						<div
+							class="seat-prices w-full grid grid-cols-3 gap-2 mb-2"
+							id="price-grid"
+						>
 							<div class="seat-row-heading flex gap-1 items-center mb-4">
 								<p class="seat-row-heading-text">Seat</p>
 								<p
 									class="seat-row-heading-number bg-primary px-2 rounded-lg text-white font-bold"
+									id="seat-selected"
 								>
-									2
+									0
 								</p>
 							</div>
 							<div class="mb-4">Class</div>
 							<div class="mb-4 justify-self-end">Price</div>
-							<div class="seat-code">A1</div>
-							<div class="seat-type">Economy</div>
-							<div class="seat-price justify-self-end">550</div>
-							<div class="seat-code">A1</div>
-							<div class="seat-type">Economy</div>
-							<div class="seat-price justify-self-end">550</div>
 						</div>
 						<div class="total-price-area flex w-full justify-between mb-4">
 							<div class="total-price-title">Total Price</div>
-							<div class="total-price">BDT 1100</div>
+							<div class="total-price" id="total-price">BDT 0</div>
 						</div>
-						<div class="coupon-area flex w-full justify-between p-2 bg-white">
+						<div
+							class="coupon-area flex w-full justify-between p-2 bg-white"
+							id="coupon-area"
+						>
 							<input
 								type="text"
 								class="coupon-input"
+								id="coupon-code"
 								placeholder="Have any coupon?"
 							/>
-							<button class="coupon-apply-btn btn bg-primary text-white">
+							<button
+								class="coupon-apply-btn btn bg-primary text-white"
+								id="coupon-button"
+								onclick="applyCoupon()"
+								disabled
+							>
 								Apply
 							</button>
 						</div>
 						<div class="grand-total-area flex justify-between">
 							<div class="grand-total-title">Grand Total</div>
-							<div class="grand-total">BDT 1100</div>
+							<div class="grand-total" id="grand-total">BDT 0</div>
 						</div>
 					</div>
 					<div class="passenger-form flex flex-col w-full gap-4">
@@ -332,28 +362,56 @@
 							required
 							type="text"
 							class="passenger-name-input outline outline-2 p-4 rounded-xl outline-[#0307121A]"
+							id="passenger-name"
 							placeholder="Enter Your Name"
 						/>
 						<div class="passenger-phone-title">Phone Number*</div>
 						<input
 							type="number"
 							class="passenger-name-input outline outline-2 p-4 rounded-xl outline-[#0307121A]"
+							id="passenger-phone"
 							placeholder="Enter Your Phone Number"
 						/>
 						<div class="passenger-email-title">Email ID</div>
 						<input
 							type="email"
 							class="passenger-email-input outline outline-2 p-4 rounded-xl outline-[#0307121A]"
+							id="passenger-email"
 							placeholder="Enter Your Email"
 						/>
-            <button class="next-button btn bg-primary text-white w-full">Next</button>
-            <div class="terms-cancel-policy flex justify-between text-[#03071299] underline">
-              <div class="terms">Terms and Conditions</div>
-              <div class="cancel-policy">Cancellation Policy</div>
-            </div>
+						<button
+							class="next-button btn bg-primary text-white w-full"
+							onclick="checkPassenger()"
+						>
+							Next
+						</button>
+						<div
+							class="terms-cancel-policy flex justify-between text-[#03071299] underline"
+						>
+							<div class="terms">Terms and Conditions</div>
+							<div class="cancel-policy">Cancellation Policy</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+		<!-- Open the modal using ID.showModal() method -->
+		<dialog id="my_modal_1" class="modal">
+			<div class="modal-box flex flex-col items-center justify-center text-center">
+				<img src="./images/success.png" alt="" class="h-20 w-20">
+				<p class="py-4 text-[#27AE60] font-bold text-xl">SUCCESS</p>
+				<p class="py-4 text-[#4A4A4A] font-medium text-xl">Thank you for Booking Our Bus Seats. We are working hard to find the best service and deals for you.</p>
+				<p class="py-4 text-[#4A4A4A] font-[300] text-xl">Shortly you will find a confirmation in your email.</p>
+				<div class="modal-action">
+					<form method="dialog">
+						<!-- if there is a button in form, it will close the modal -->
+						<button class="btn bg-[#27AE60] text-white rounded-full" onclick="closeModal()">Continue</button>
+					</form>
+				</div>
+			</div>
+		</dialog>
+		<script src="js/selectSeat.js"></script>
+		<script src="js/applyCoupon.js"></script>
+		<script src="js/passengerForm.js"></script>
 	</body>
 </html>
